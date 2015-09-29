@@ -4,7 +4,7 @@
 #
 Name     : tar
 Version  : 1.28
-Release  : 11
+Release  : 12
 URL      : http://ftp.gnu.org/gnu/tar/tar-1.28.tar.xz
 Source0  : http://ftp.gnu.org/gnu/tar/tar-1.28.tar.xz
 Summary  : No detailed summary available
