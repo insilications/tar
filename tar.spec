@@ -4,7 +4,7 @@
 #
 Name     : tar
 Version  : 1.29
-Release  : 15
+Release  : 16
 URL      : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source0  : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Summary  : No detailed summary available
@@ -15,6 +15,7 @@ Requires: tar-doc
 Requires: tar-locales
 BuildRequires : acl-dev
 BuildRequires : bison
+Patch1: CVE-2016-6321.patch
 
 %description
 See the end of file for copying conditions.
@@ -48,6 +49,7 @@ locales components for the tar package.
 
 %prep
 %setup -q -n tar-1.29
+%patch1 -p1
 
 %build
 export LANG=C
@@ -59,7 +61,7 @@ export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
 rm -rf %{buildroot}
@@ -80,6 +82,6 @@ rm -rf %{buildroot}
 %doc /usr/share/man/man1/*
 %doc /usr/share/man/man8/*
 
-%files locales -f tar.lang 
+%files locales -f tar.lang
 %defattr(-,root,root,-)
 
