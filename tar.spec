@@ -6,7 +6,7 @@
 #
 Name     : tar
 Version  : 1.29
-Release  : 19
+Release  : 20
 URL      : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source0  : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source99 : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz.asc
