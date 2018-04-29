@@ -5,7 +5,6 @@ Configure miss: sys/io/trioctl.h
 Configure miss: sys/tprintf.h
 Configure miss: sys/tape.h
 Configure miss: linewrap.h
-Configure miss: xlocale.h
 Configure miss: priv.h
 Configure miss: selinux/selinux.h
 Configure miss: sys/buf.h
