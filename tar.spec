@@ -6,7 +6,7 @@
 #
 Name     : tar
 Version  : 1.29
-Release  : 21
+Release  : 22
 URL      : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source0  : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source99 : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz.asc
@@ -31,6 +31,7 @@ BuildRequires : pkg-config-dev
 Patch1: CVE-2016-6321.patch
 Patch2: timestamp.patch
 Patch3: add-zstd.patch
+Patch4: blocking.patch
 
 %description
 See the end of file for copying conditions.
@@ -67,13 +68,14 @@ locales components for the tar package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1525045512
+export SOURCE_DATE_EPOCH=1525049846
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
@@ -89,7 +91,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1525045512
+export SOURCE_DATE_EPOCH=1525049846
 rm -rf %{buildroot}
 %make_install
 %find_lang tar

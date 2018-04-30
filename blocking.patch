@@ -1,0 +1,22 @@
+--- tar-1.29/src/tar.c~	2016-03-24 05:42:14.000000000 +0000
++++ tar-1.29/src/tar.c	2018-04-30 00:47:36.206363430 +0000
+@@ -65,7 +65,7 @@
+ #endif
+ 
+ #ifndef DEFAULT_BLOCKING
+-# define DEFAULT_BLOCKING 20
++# define DEFAULT_BLOCKING 256
+ #endif
+ 
+ /* Print a message if not all links are dumped */
+--- tar-1.29/configure.ac~	2016-05-16 08:51:12.000000000 +0000
++++ tar-1.29/configure.ac	2018-04-30 00:48:44.845369649 +0000
+@@ -307,7 +307,7 @@
+ AC_ARG_VAR([DEFAULT_BLOCKING],
+            [Define default blocking factor (default: 20)])
+ AC_MSG_CHECKING(for default blocking)
+-DEFAULT_BLOCKING=${DEFAULT_BLOCKING-20}
++DEFAULT_BLOCKING=${DEFAULT_BLOCKING-256}
+ AC_DEFINE_UNQUOTED(DEFAULT_BLOCKING, $DEFAULT_BLOCKING,
+   [Define to a number giving the default blocking size for archives.])
+ AC_MSG_RESULT($DEFAULT_BLOCKING)
