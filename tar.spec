@@ -6,7 +6,7 @@
 #
 Name     : tar
 Version  : 1.29
-Release  : 22
+Release  : 23
 URL      : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source0  : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
 Source99 : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz.asc
@@ -75,11 +75,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1525049846
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export SOURCE_DATE_EPOCH=1525732373
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %reconfigure --disable-static LDFLAGS=-static
 make  %{?_smp_mflags}
 
@@ -91,7 +91,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1525049846
+export SOURCE_DATE_EPOCH=1525732373
 rm -rf %{buildroot}
 %make_install
 %find_lang tar
