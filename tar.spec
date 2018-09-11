@@ -5,17 +5,18 @@
 # Source0 file verified with key 0x3602B07F55D0C732 (gray@gnu.org)
 #
 Name     : tar
-Version  : 1.29
-Release  : 26
-URL      : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
-Source0  : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz
-Source99 : http://ftp.gnu.org/gnu/tar/tar-1.29.tar.xz.asc
+Version  : 1.30
+Release  : 27
+URL      : http://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz
+Source0  : http://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz
+Source99 : http://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+
 Requires: tar-bin
-Requires: tar-doc
+Requires: tar-license
 Requires: tar-locales
+Requires: tar-man
 Requires: xz-bin
 Requires: zstd-bin
 BuildRequires : acl-dev
@@ -23,15 +24,15 @@ BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
 BuildRequires : gettext-bin
+BuildRequires : glibc-locale
 BuildRequires : glibc-staticdev
 BuildRequires : libtool
 BuildRequires : libtool-dev
 BuildRequires : m4
 BuildRequires : pkg-config-dev
-Patch1: CVE-2016-6321.patch
-Patch2: timestamp.patch
-Patch3: add-zstd.patch
-Patch4: blocking.patch
+Patch1: timestamp.patch
+Patch2: add-zstd.patch
+Patch3: blocking.patch
 
 %description
 See the end of file for copying conditions.
@@ -42,6 +43,8 @@ Please glance through *all* sections of this
 %package bin
 Summary: bin components for the tar package.
 Group: Binaries
+Requires: tar-license
+Requires: tar-man
 
 %description bin
 bin components for the tar package.
@@ -50,9 +53,18 @@ bin components for the tar package.
 %package doc
 Summary: doc components for the tar package.
 Group: Documentation
+Requires: tar-man
 
 %description doc
 doc components for the tar package.
+
+
+%package license
+Summary: license components for the tar package.
+Group: Default
+
+%description license
+license components for the tar package.
 
 
 %package locales
@@ -63,19 +75,26 @@ Group: Default
 locales components for the tar package.
 
 
+%package man
+Summary: man components for the tar package.
+Group: Default
+
+%description man
+man components for the tar package.
+
+
 %prep
-%setup -q -n tar-1.29
+%setup -q -n tar-1.30
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526024418
+export SOURCE_DATE_EPOCH=1536631412
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -91,8 +110,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1526024418
+export SOURCE_DATE_EPOCH=1536631412
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/tar
+cp COPYING %{buildroot}/usr/share/doc/tar/COPYING
 %make_install
 %find_lang tar
 
@@ -105,10 +126,19 @@ rm -rf %{buildroot}
 /usr/libexec/rmt
 
 %files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/info/tar.info
+%doc /usr/share/info/tar.info-1
+%doc /usr/share/info/tar.info-2
+
+%files license
 %defattr(-,root,root,-)
-%doc /usr/share/info/*
-%doc /usr/share/man/man1/*
-%doc /usr/share/man/man8/*
+/usr/share/doc/tar/COPYING
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man1/tar.1
+/usr/share/man/man8/rmt.8
 
 %files locales -f tar.lang
 %defattr(-,root,root,-)
