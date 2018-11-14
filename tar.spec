@@ -6,17 +6,18 @@
 #
 Name     : tar
 Version  : 1.30
-Release  : 27
-URL      : http://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz
-Source0  : http://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz
-Source99 : http://ftp.gnu.org/gnu/tar/tar-1.30.tar.xz.sig
+Release  : 28
+URL      : https://mirrors.kernel.org/gnu/tar/tar-1.30.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.30.tar.xz
+Source99 : https://mirrors.kernel.org/gnu/tar/tar-1.30.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+
-Requires: tar-bin
-Requires: tar-license
-Requires: tar-locales
-Requires: tar-man
+Requires: tar-bin = %{version}-%{release}
+Requires: tar-libexec = %{version}-%{release}
+Requires: tar-license = %{version}-%{release}
+Requires: tar-locales = %{version}-%{release}
+Requires: tar-man = %{version}-%{release}
 Requires: xz-bin
 Requires: zstd-bin
 BuildRequires : acl-dev
@@ -43,8 +44,9 @@ Please glance through *all* sections of this
 %package bin
 Summary: bin components for the tar package.
 Group: Binaries
-Requires: tar-license
-Requires: tar-man
+Requires: tar-libexec = %{version}-%{release}
+Requires: tar-license = %{version}-%{release}
+Requires: tar-man = %{version}-%{release}
 
 %description bin
 bin components for the tar package.
@@ -53,10 +55,19 @@ bin components for the tar package.
 %package doc
 Summary: doc components for the tar package.
 Group: Documentation
-Requires: tar-man
+Requires: tar-man = %{version}-%{release}
 
 %description doc
 doc components for the tar package.
+
+
+%package libexec
+Summary: libexec components for the tar package.
+Group: Default
+Requires: tar-license = %{version}-%{release}
+
+%description libexec
+libexec components for the tar package.
 
 
 %package license
@@ -94,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536631412
+export SOURCE_DATE_EPOCH=1542163344
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -110,10 +121,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1536631412
+export SOURCE_DATE_EPOCH=1542163344
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/tar
-cp COPYING %{buildroot}/usr/share/doc/tar/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/tar
+cp COPYING %{buildroot}/usr/share/package-licenses/tar/COPYING
 %make_install
 %find_lang tar
 
@@ -123,20 +134,21 @@ cp COPYING %{buildroot}/usr/share/doc/tar/COPYING
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/tar
-/usr/libexec/rmt
 
 %files doc
 %defattr(0644,root,root,0755)
-%doc /usr/share/info/tar.info
-%doc /usr/share/info/tar.info-1
-%doc /usr/share/info/tar.info-2
+%doc /usr/share/info/*
+
+%files libexec
+%defattr(-,root,root,-)
+/usr/libexec/rmt
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/tar/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/tar/COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/tar.1
 /usr/share/man/man8/rmt.8
 
