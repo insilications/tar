@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3602B07F55D0C732 (gray@gnu.org)
 #
 Name     : tar
-Version  : 1.30
-Release  : 28
-URL      : https://mirrors.kernel.org/gnu/tar/tar-1.30.tar.xz
-Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.30.tar.xz
-Source99 : https://mirrors.kernel.org/gnu/tar/tar-1.30.tar.xz.sig
+Version  : 1.31
+Release  : 29
+URL      : https://mirrors.kernel.org/gnu/tar/tar-1.31.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.31.tar.xz
+Source99 : https://mirrors.kernel.org/gnu/tar/tar-1.31.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+
@@ -32,8 +32,7 @@ BuildRequires : libtool-dev
 BuildRequires : m4
 BuildRequires : pkg-config-dev
 Patch1: timestamp.patch
-Patch2: add-zstd.patch
-Patch3: blocking.patch
+Patch2: blocking.patch
 
 %description
 See the end of file for copying conditions.
@@ -95,17 +94,16 @@ man components for the tar package.
 
 
 %prep
-%setup -q -n tar-1.30
+%setup -q -n tar-1.31
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542163344
+export SOURCE_DATE_EPOCH=1546466283
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -121,7 +119,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1542163344
+export SOURCE_DATE_EPOCH=1546466283
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tar
 cp COPYING %{buildroot}/usr/share/package-licenses/tar/COPYING
