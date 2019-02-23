@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3602B07F55D0C732 (gray@gnu.org)
 #
 Name     : tar
-Version  : 1.31
-Release  : 29
-URL      : https://mirrors.kernel.org/gnu/tar/tar-1.31.tar.xz
-Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.31.tar.xz
-Source99 : https://mirrors.kernel.org/gnu/tar/tar-1.31.tar.xz.sig
+Version  : 1.32
+Release  : 30
+URL      : https://mirrors.kernel.org/gnu/tar/tar-1.32.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.32.tar.xz
+Source99 : https://mirrors.kernel.org/gnu/tar/tar-1.32.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+
@@ -94,7 +94,7 @@ man components for the tar package.
 
 
 %prep
-%setup -q -n tar-1.31
+%setup -q -n tar-1.32
 %patch1 -p1
 %patch2 -p1
 
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546466283
+export SOURCE_DATE_EPOCH=1550938007
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -119,7 +119,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1546466283
+export SOURCE_DATE_EPOCH=1550938007
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tar
 cp COPYING %{buildroot}/usr/share/package-licenses/tar/COPYING
