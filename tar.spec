@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3602B07F55D0C732 (gray@gnu.org)
 #
 Name     : tar
-Version  : 1.32
-Release  : 32
-URL      : https://mirrors.kernel.org/gnu/tar/tar-1.32.tar.xz
-Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.32.tar.xz
-Source1  : https://mirrors.kernel.org/gnu/tar/tar-1.32.tar.xz.sig
+Version  : 1.33
+Release  : 33
+URL      : https://mirrors.kernel.org/gnu/tar/tar-1.33.tar.xz
+Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.33.tar.xz
+Source1  : https://mirrors.kernel.org/gnu/tar/tar-1.33.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0 GPL-3.0+
@@ -93,8 +93,8 @@ man components for the tar package.
 
 
 %prep
-%setup -q -n tar-1.32
-cd %{_builddir}/tar-1.32
+%setup -q -n tar-1.33
+cd %{_builddir}/tar-1.33
 %patch1 -p1
 %patch2 -p1
 
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605247154
+export SOURCE_DATE_EPOCH=1610130883
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -120,10 +120,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1605247154
+export SOURCE_DATE_EPOCH=1610130883
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/tar
-cp %{_builddir}/tar-1.32/COPYING %{buildroot}/usr/share/package-licenses/tar/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/tar-1.33/COPYING %{buildroot}/usr/share/package-licenses/tar/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 %find_lang tar
 

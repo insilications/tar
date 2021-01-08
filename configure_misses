@@ -1,3 +1,5 @@
+Configure miss: whether the compiler is clang
+Configure miss: compiler option needed when checking for declarations
 Configure miss: sys/device.h
 Configure miss: sys/gentape.h
 Configure miss: sys/inet.h
@@ -13,6 +15,7 @@ Configure miss: st_fstype string in struct stat
 Configure miss: library containing acl_get_file
 Configure miss: major_t
 Configure miss: minor_t
+Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: library containing setfilecon
 Configure miss: facl
 Configure miss: getacl
@@ -20,18 +23,17 @@ Configure miss: aclv.h
 Configure miss: aclx_get
 Configure miss: statacl
 Configure miss: aclsort
-Configure miss: whether getcwd aborts when 4k < cwd_length < 16k
+Configure miss: whether this system supports file names of any length
+Configure miss: whether fchmodat+AT_SYMLINK_NOFOLLOW works on non-symlinks
+Configure miss: whether free is known to preserve errno
 Configure miss: __xpg4
 Configure miss: whether link(2) dereferences a symlink
+Configure miss: whether mbrtowc stores incomplete characters
 Configure miss: obstacks that work with any size object
 Configure miss: getppriv
 Configure miss: working re_compile_pattern
-Configure miss: selinux/flask.h usability
-Configure miss: selinux/flask.h presence
 Configure miss: selinux/flask.h
-Configure miss: whether localtime loops forever near extrema
 Configure miss: timezone_t
-Configure miss: whether tzset clobbers localtime buffer
 Configure miss: remote shell
 Configure miss: 32-bit host C ABI
 Configure miss: CFLocaleCopyPreferredLanguages
