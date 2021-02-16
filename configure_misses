@@ -15,6 +15,7 @@ Configure miss: st_fstype string in struct stat
 Configure miss: library containing acl_get_file
 Configure miss: major_t
 Configure miss: minor_t
+Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: library containing setfilecon
 Configure miss: facl
