@@ -6,7 +6,7 @@
 #
 Name     : tar
 Version  : 1.34
-Release  : 34
+Release  : 35
 URL      : https://mirrors.kernel.org/gnu/tar/tar-1.34.tar.xz
 Source0  : https://mirrors.kernel.org/gnu/tar/tar-1.34.tar.xz
 Source1  : https://mirrors.kernel.org/gnu/tar/tar-1.34.tar.xz.sig
