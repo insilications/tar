@@ -109,7 +109,7 @@ export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-reg
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-%reconfigure --disable-static LDFLAGS=-static
+%reconfigure --disable-static
 make  %{?_smp_mflags}
 
 %check
