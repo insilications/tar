@@ -32,7 +32,6 @@ gettext
 gettext-bin
 git
 glibc
-glibc-abi
 glibc-bench
 glibc-bin
 glibc-dev

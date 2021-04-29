@@ -51,7 +51,6 @@ BuildRequires : gettext
 BuildRequires : gettext-bin
 BuildRequires : git
 BuildRequires : glibc
-BuildRequires : glibc-abi
 BuildRequires : glibc-bench
 BuildRequires : glibc-bin
 BuildRequires : glibc-dev
@@ -168,7 +167,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1619456673
+export SOURCE_DATE_EPOCH=1619726262
 unset LD_AS_NEEDED
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
@@ -243,7 +242,7 @@ ccache -s
 
 
 %install
-export SOURCE_DATE_EPOCH=1619456673
+export SOURCE_DATE_EPOCH=1619726262
 rm -rf %{buildroot}
 %make_install
 %find_lang tar
