@@ -1,5 +1,39 @@
 #
-# This file contains extra pkgconfig build requirements that don't get picked up but are 
+# This file contains extra pkgconfig build requirements that don't get picked up but are
 # desirable. One name per line, no whitespace.
 #
+acl-dev
+acl-staticdev
+automake
+automake-dev
+bison
+bzip2-dev
+bzip2-staticdev
+clr-rpm-config
+gettext-bin
+glibc-locale
 glibc-staticdev
+libcap
+libcap-dev
+libtool
+libtool-dev
+lz4-dev
+lz4-staticdev
+lzo-dev
+lzo-staticdev
+m4
+pigz
+pigz-bin
+pkg-config-dev
+texinfo
+unzip
+xattr
+xz-bin
+xz-dev
+xz-staticdev
+zip
+zlib-dev
+zlib-staticdev
+zstd-bin
+zstd-dev
+zstd-staticdev

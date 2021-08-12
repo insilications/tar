@@ -1,0 +1,5 @@
+--disable-shared
+--enable-static
+--enable-acl
+--with-xattrs
+--with-gzip=pigz

@@ -1,5 +1,6 @@
 PKG_NAME := tar
-URL = https://mirrors.kernel.org/gnu/tar/tar-1.34.tar.xz
+URL = https://git.savannah.gnu.org/git/tar.git
 ARCHIVES = 
+ARCHIVES_GIT = 
 
 include ../common/Makefile.common

@@ -2,3 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 xz-bin
 zstd-bin
+pigz-bin
+bzip2-bin

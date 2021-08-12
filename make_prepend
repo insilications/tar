@@ -1,0 +1,1 @@
+sd "\-lacl" "/usr/lib64/libacl.a" $(fd -uu --follow .*Makefile$) $(fd -uu --follow .*mk$)
