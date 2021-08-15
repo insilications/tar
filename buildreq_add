@@ -4,6 +4,8 @@
 #
 acl-dev
 acl-staticdev
+attr
+attr-dev
 automake
 automake-dev
 bison
@@ -32,6 +34,8 @@ xz-bin
 xz-dev
 xz-staticdev
 zip
+lzop
+lzop-bin
 zlib-dev
 zlib-staticdev
 zstd-bin

@@ -11,12 +11,20 @@ Source0  : file:///aot/build/clearlinux/packages/tar/tar-v1.34.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 GPL-3.0+ LGPL-2.1
+Requires: tar-bin = %{version}-%{release}
+Requires: tar-info = %{version}-%{release}
+Requires: tar-libexec = %{version}-%{release}
+Requires: tar-locales = %{version}-%{release}
+Requires: tar-man = %{version}-%{release}
 Requires: bzip2-bin
+Requires: lzop-bin
 Requires: pigz-bin
 Requires: xz-bin
 Requires: zstd-bin
 BuildRequires : acl-dev
 BuildRequires : acl-staticdev
+BuildRequires : attr
+BuildRequires : attr-dev
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
@@ -35,6 +43,8 @@ BuildRequires : lz4-dev
 BuildRequires : lz4-staticdev
 BuildRequires : lzo-dev
 BuildRequires : lzo-staticdev
+BuildRequires : lzop
+BuildRequires : lzop-bin
 BuildRequires : m4
 BuildRequires : pigz
 BuildRequires : pigz-bin
@@ -63,6 +73,47 @@ See the end of file for copying conditions.
 Please glance through *all* sections of this
 'ABOUT-NLS' and 'INSTALL' if you are not familiar with them already.
 
+%package bin
+Summary: bin components for the tar package.
+Group: Binaries
+Requires: tar-libexec = %{version}-%{release}
+
+%description bin
+bin components for the tar package.
+
+
+%package info
+Summary: info components for the tar package.
+Group: Default
+
+%description info
+info components for the tar package.
+
+
+%package libexec
+Summary: libexec components for the tar package.
+Group: Default
+
+%description libexec
+libexec components for the tar package.
+
+
+%package locales
+Summary: locales components for the tar package.
+Group: Default
+
+%description locales
+locales components for the tar package.
+
+
+%package man
+Summary: man components for the tar package.
+Group: Default
+
+%description man
+man components for the tar package.
+
+
 %prep
 %setup -q -n tar
 cd %{_builddir}/tar
@@ -75,7 +126,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629064103
+export SOURCE_DATE_EPOCH=1629065773
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
@@ -168,7 +219,11 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 --enable-static \
 --enable-acl \
 --with-xattrs \
---with-gzip=pigz
+--with-gzip=pigz \
+--disable-gcc-warnings
+## make_prepend content
+sd "\-lacl" "/usr/lib64/libacl.a" $(fd -uu --follow .*Makefile$) $(fd -uu --follow .*mk$)
+## make_prepend end
 make  %{?_smp_mflags}    V=1 VERBOSE=1
 
 ## profile_payload start
@@ -192,15 +247,42 @@ export LDFLAGS="${LDFLAGS_USE}"
 --enable-static \
 --enable-acl \
 --with-xattrs \
---with-gzip=pigz
+--with-gzip=pigz \
+--disable-gcc-warnings
+## make_prepend content
+sd "\-lacl" "/usr/lib64/libacl.a" $(fd -uu --follow .*Makefile$) $(fd -uu --follow .*mk$)
+## make_prepend end
 make  %{?_smp_mflags}    V=1 VERBOSE=1
 fi
 
 
 %install
-export SOURCE_DATE_EPOCH=1629064103
+export SOURCE_DATE_EPOCH=1629065773
 rm -rf %{buildroot}
 %make_install
+%find_lang tar
 
 %files
+%defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/tar
+
+%files info
+%defattr(0644,root,root,0755)
+/usr/share/info/tar.info
+/usr/share/info/tar.info-1
+/usr/share/info/tar.info-2
+
+%files libexec
+%defattr(-,root,root,-)
+/usr/libexec/rmt
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/tar.1
+/usr/share/man/man8/rmt.8
+
+%files locales -f tar.lang
 %defattr(-,root,root,-)
