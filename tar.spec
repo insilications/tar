@@ -126,7 +126,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629065773
+export SOURCE_DATE_EPOCH=1629065792
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
@@ -257,7 +257,7 @@ fi
 
 
 %install
-export SOURCE_DATE_EPOCH=1629065773
+export SOURCE_DATE_EPOCH=1629065792
 rm -rf %{buildroot}
 %make_install
 %find_lang tar
