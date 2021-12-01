@@ -18,6 +18,7 @@ glibc-staticdev
 libcap
 libcap-dev
 libtool
+lbzip2
 libtool-dev
 lz4-dev
 lz4-staticdev

@@ -3,4 +3,5 @@
 --enable-acl
 --with-xattrs
 --with-gzip=pigz
+--with-bzip2=lbzip2
 --disable-gcc-warnings

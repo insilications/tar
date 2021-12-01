@@ -1,5 +1,5 @@
 PKG_NAME := tar
-URL = https://git.savannah.gnu.org/git/tar.git
+URL = /insilications/build/git-clr/tar-clr
 ARCHIVES = 
 ARCHIVES_GIT = 
 
