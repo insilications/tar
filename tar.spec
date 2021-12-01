@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : tar
 Version  : 1.34
-Release  : 312
+Release  : 313
 URL      : file:///aot/build/clearlinux/packages/tar/tar-v1.34.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/tar/tar-v1.34.tar.gz
 Summary  : No detailed summary available
@@ -23,7 +23,6 @@ BuildRequires : attr-dev
 BuildRequires : automake
 BuildRequires : automake-dev
 BuildRequires : bison
-BuildRequires : buildreq-configure
 BuildRequires : bzip2-dev
 BuildRequires : bzip2-staticdev
 BuildRequires : clr-rpm-config
@@ -81,7 +80,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638361125
+export SOURCE_DATE_EPOCH=1638361223
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
@@ -228,7 +227,7 @@ fi
 
 
 %install
-export SOURCE_DATE_EPOCH=1638361125
+export SOURCE_DATE_EPOCH=1638361223
 rm -rf %{buildroot}
 %make_install
 

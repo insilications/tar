@@ -5,3 +5,4 @@
 --with-gzip=pigz
 --with-bzip2=lbzip2
 --disable-gcc-warnings
+--disable-maintainer-mode
